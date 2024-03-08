@@ -6,6 +6,7 @@ import com.theokanning.openai.completion.chat.ChatCompletionChunk;
 import io.reactivex.Flowable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter;
 
@@ -19,7 +20,9 @@ public class ChatController {
     private ChatbotService service;
 
     @GetMapping
-    public String carregarPaginaChatbot() {
+    public String carregarPaginaChatbot(Model model) {
+        var mensagens = service.carregarHistorico();
+        model.addAttribute("historico",mensagens);
         return PAGINA_CHAT;
     }
 
