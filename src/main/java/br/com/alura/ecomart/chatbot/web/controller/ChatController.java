@@ -25,18 +25,8 @@ public class ChatController {
 
     @PostMapping
     @ResponseBody
-    public ResponseBodyEmitter responderPergunta(@RequestBody PerguntaDto dto) {
-        var fluxoResposta = service.responderPergunta(dto.pergunta());
-        var emitter = new ResponseBodyEmitter();
-
-        fluxoResposta.subscribe(chunk -> {
-           var token = chunk.getChoices().get(0).getMessage().getContent();
-           if(token != null){
-               emitter.send(token);
-           }
-        }, emitter::completeWithError, emitter::complete);
-
-        return emitter;
+    public String responderPergunta(@RequestBody PerguntaDto dto) {
+        return service.responderPergunta(dto.pergunta());
     }
 
     @GetMapping("limpar")
