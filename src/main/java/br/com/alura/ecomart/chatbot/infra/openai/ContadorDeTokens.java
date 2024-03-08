@@ -12,7 +12,7 @@ public class ContadorDeTokens {
 
     public ContadorDeTokens() {
         var registry = Encodings.newDefaultEncodingRegistry();
-        this.encoding = registry.getEncodingForModel(ModelType.GPT_4);
+        this.encoding = registry.getEncodingForModel(ModelType.GPT_3_5_TURBO);
     }
 
     public int contarTokens(String mensagem) {

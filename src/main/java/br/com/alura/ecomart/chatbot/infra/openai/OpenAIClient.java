@@ -25,7 +25,7 @@ public class OpenAIClient {
     public String enviarRequisicaoChatCompletion(DadosRequisicaoChatCompletion dados) {
         var request = ChatCompletionRequest
                 .builder()
-                .model("gpt-4-1106-preview")
+                .model("gpt-3.5-turbo")
                 .messages(Arrays.asList(
                         new ChatMessage(
                                 ChatMessageRole.SYSTEM.value(),
